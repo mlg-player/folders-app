@@ -1,7 +1,12 @@
 .leftPanel {
-    width: 300px;
+    width: 340px;
     display: flex;
+    background-color: var(--bg-left);
     flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    // border-right: 1px solid var(--stroke);
     .add-folder{
         height: 100px;
     }

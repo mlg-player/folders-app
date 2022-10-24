@@ -1,9 +1,17 @@
 .folder{
-    height: 30px;
-    background-color: rgb(44, 44, 44);
-    color: whitesmoke;
+    height: 40px;
+    background-color: var(--bg-left);
+    color: var(--white);
     font-size: 20px;
     display: flex;
     padding: 0 10px;
     align-items: center;
+    user-select: none;
+    &:hover {
+        background-color: var(--bg-left-hover);
+        cursor: pointer;
+    }
+}
+.active {
+    background-color: var(--bg-left-hover);
 }

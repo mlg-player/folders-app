@@ -38,11 +38,10 @@ const LeftPanelInput = () => {
           min="2"
           placeholder="Add new folder"
           onBlur={() => {
-            setShowInput(false);
+            // setShowInput(false);
           }}
           onChange={({ target }) => setValue(target.value)}
         />
-        <input className={css.addFolderSubmitBtn} type="submit" />
       </form>
     )
    } , [input, css, value])

@@ -1,6 +1,25 @@
+:root {
+    --bg-center: rgb(52, 52, 52);
+    --bg-left: rgb(41, 41, 41);
+    --bg-left-hover: rgb(34, 34, 34);
+    --stroke: rgba(33, 33, 33, 0.7);
+    --white: rgb(237, 237, 237);
+  }
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     border: 0;
+    outline: unset;
+    font-family: 'Lato', 'Roboto';
+}
+
+html {
+    background-color: var(--bg-center);
+}
+
+#root {
+    display: flex;
+    color: var(--white);
 }

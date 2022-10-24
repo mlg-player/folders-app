@@ -1,10 +1,12 @@
 import React from "react";
+import CenterPanel from "./ConterPanel/ConterPanel";
 import LeftPanel from "./LeftPanel/LeftPanel";
 const App = () => {
   return (
-    <div>
+    <>
       <LeftPanel />
-    </div>
+      <CenterPanel />
+    </>
   );
 };
 
