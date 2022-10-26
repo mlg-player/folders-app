@@ -4,3 +4,4 @@ dist
 *.lock
 *.log
 package-lock.json
+db-data

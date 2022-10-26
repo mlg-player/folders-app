@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 
 export type IFolder = {
-  title: string;
+  name: string;
   order?: number;
   id?: string;
 };
@@ -21,9 +21,13 @@ export const FoldersStore = createSlice({
     folders: folderEntety.getInitialState(),
   },
   reducers: {
+    initial: (state, action: PayloadAction<IFolder[]>) => {
+      folderEntety.addMany(state.folders, action.payload)
+    },
     addFolder: (state, action: PayloadAction<IFolder>) => {
       folderEntety.addOne(state.folders, {
         ...action.payload,
+        id: `folders:${action.payload.id}`,
         order: state.folders.ids.length,
       });
     },

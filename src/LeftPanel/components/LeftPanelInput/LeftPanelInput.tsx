@@ -3,6 +3,8 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { FoldersStore } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelInput.module.scss";
+
+import API from "../../../fetch";
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -11,15 +13,18 @@ const LeftPanelInput = () => {
 
   const handleSubmit = useCallback(() => {
     if (value.length < 2) return;
+    const item = {
+      id: uniqueId(),
+      name: value,
+    }
+    // name, id, order
+    new API().addFolder(item)
     dispatch(
-      FoldersStore.actions.addFolder({
-        id: uniqueId(),
-        title: value,
-      })
+      FoldersStore.actions.addFolder(item)
     );
     setValue("");
   }, [value]);
-  const formInput = useMemo(() =>{
+  const formInput = useMemo(() => {
     return (
       <form
         className={css.addFolderForm}
@@ -33,6 +38,7 @@ const LeftPanelInput = () => {
           type="text"
           value={value}
           max="24"
+          // pattern="/[\w ._-]+/gsi"
           autoCapitalize="on"
           ref={input}
           min="2"
@@ -43,8 +49,8 @@ const LeftPanelInput = () => {
           onChange={({ target }) => setValue(target.value)}
         />
       </form>
-    )
-   } , [input, css, value])
+    );
+  }, [input, css, value]);
   return (
     <div className={css.addFolder}>
       {showInput && formInput}

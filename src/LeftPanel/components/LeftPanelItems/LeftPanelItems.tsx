@@ -21,7 +21,7 @@ const LeftPanelItems = (props: {
             <Icon></Icon>
         </div> 
     */}
-      <p>{folder?.title}</p>
+      <p>{folder?.name}</p>
       {/* <span>
         {folder?.order}
       </span> */}
