@@ -1,4 +1,4 @@
-import { ipcMain } from "electron";
+// import { ipcMain } from "electron";
 
 const { contextBridge, ipcRenderer } = require("electron");
 
@@ -6,7 +6,7 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld('electronApp', {
     onDownload: () => ipcRenderer.send('download-started')
 })
-if(window){
-  window.ipcMain = ipcMain;
-  window.ipcRenderer = ipcRenderer;
-}
+// if(window){
+//   window.ipcMain = ipcMain;
+//   window.ipcRenderer = ipcRenderer;
+// }

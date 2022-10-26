@@ -25,7 +25,7 @@ const mainWindow = () => {
     minWidth: 600,
     minHeight: 800,
   });
-  win.loadURL("http://localhost:1500")
+  win.loadURL("http://localhost:1500/")
   return win;
 };
 app.whenReady().then(() => {

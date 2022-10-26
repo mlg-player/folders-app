@@ -32,11 +32,18 @@ const config = () => {
       filename: "[name].[contenthash].js",
       clean: true,
       path: path.join(__dirname, "/dist/static"),
+      asyncChunks: true,
+
+
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: "public/index.html",
       }),
+      new webpack.DefinePlugin({
+        process: {env: {}}
+    })
+  
     ],
     optimization: {
       runtimeChunk: "multiple",
@@ -45,7 +52,7 @@ const config = () => {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",
-            chunks: "async",
+            chunks: "all",
           },
         },
       },
