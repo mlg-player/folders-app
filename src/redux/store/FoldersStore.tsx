@@ -28,7 +28,6 @@ export const FoldersStore = createSlice({
       folderEntety.addOne(state.folders, {
         ...action.payload,
         id: `folders:${action.payload.id}`,
-        order: state.folders.ids.length,
       });
     },
   },

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import { useSelector } from "react-redux";
 import { getCurrentFolder, getFolderItems } from "../redux/selectors/folders";
@@ -19,4 +20,4 @@ const CenterPanel = () => {
     </div>
   );
 };
-export default CenterPanel;
+export default React.memo(CenterPanel, _.isEqual);

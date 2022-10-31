@@ -38,3 +38,10 @@ export const getFolderItems = createSelector(
     return arr;
   }
 );
+
+export const getFoldersCount = createSelector(
+  [
+    (state: RootState) => state.folders.folders.ids.length
+  ],
+  (length) => length 
+)

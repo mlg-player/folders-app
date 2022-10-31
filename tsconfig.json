@@ -22,8 +22,9 @@
     "noEmit": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "outDir": "dist"
 
   },
   "include": ["typings/**/*", "src/**/*"],
-  "exclude": ["build", "config", "node_modules", "public"]
+  "exclude": ["build", "config", "node_modules", "public", "dist"]
 }
