@@ -1,13 +1,25 @@
 .leftPanel {
-    width: 340px;
+    width: 320px;
     display: flex;
-    background-color: var(--bg-left);
+    background: linear-gradient(rgba(1, 1, 0, 0.5), rgba(22, 0, 0, 0.5)), url("../../public/bg-image.png");
+    // background-image: ;
     flex-direction: column;
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     scrollbar-width: thin;
-    // border-right: 1px solid var(--stroke);
-    .add-folder{
+    padding: 11px;
+    position: relative;
+
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .add-folder {
         height: 100px;
     }
 }
