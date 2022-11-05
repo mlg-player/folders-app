@@ -1,29 +1,28 @@
 import { isEqual, uniqueId } from "lodash";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FoldersStore } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelInput.module.scss";
 
 import API from "../../../fetch";
+import { getFoldersCount } from "../../../redux/selectors/folders";
+import useLocale from "../../../hooks/useLocale";
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const [showInput, setShowInput] = useState(true);
   const [value, setValue] = useState("");
-
+  const order = useSelector(getFoldersCount);
   const handleSubmit = useCallback(() => {
     if (value.length < 2) return;
     const item = {
       id: uniqueId(),
       name: value,
-    }
-    // name, id, order
-    new API().addFolder(item)
-    dispatch(
-      FoldersStore.actions.addFolder(item)
-    );
+    };
+    new API().addFolder({ ...item, order: order });
+    dispatch(FoldersStore.actions.addFolder(item));
     setValue("");
-  }, [value]);
+  }, [value, order]);
   const formInput = useMemo(() => {
     return (
       <form
@@ -42,7 +41,7 @@ const LeftPanelInput = () => {
           autoCapitalize="on"
           ref={input}
           min="2"
-          placeholder="Add new folder"
+          placeholder={useLocale("left_panel.button.add_new_folder")}
           onBlur={() => {
             // setShowInput(false);
           }}
@@ -64,7 +63,7 @@ const LeftPanelInput = () => {
             }, 1);
           }}
         >
-          <span>Add new folder</span>
+          <span>{useLocale("left_panel.button.add_new_folder")}</span>
         </button>
       )}
     </div>

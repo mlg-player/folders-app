@@ -1,21 +1,40 @@
-.addFolder{
-    display: flex;
+.addFolder {
+    display: flex; 
+    position: sticky;
+    top: 0px;
+    background-color:  rgba(200, 200, 200, 0.079);
+    // mix-blend-mode: luminosity;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    margin: 11px;
 }
 
-.addFolderForm{
+.addFolderForm {
     display: flex;
     width: 100%;
 }
-.addFolderInput{ 
+
+.addFolderInput {
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
-    height: 40px;
+    height: 35px;
     border: 0;
     margin: 0;
-    background-color: var(--bg-left);
+    background-color: transparent;
     color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: rgba(255, 255, 255, 0.2);
+   
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+
+    }
 }
+
 .createNewFolder {
     height: 40px;
     width: 100%;
