@@ -5,7 +5,7 @@ import LeftPanel from "./LeftPanel/LeftPanel";
 import { useAppDispatch } from "./redux";
 import socket from "./redux/socketEventListener";
 import { FoldersStore } from "./redux/store/FoldersStore";
-import socketClient from "./socketClient";
+
 
 const App = () => {
   const dispatch = useAppDispatch();

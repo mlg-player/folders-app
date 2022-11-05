@@ -1,13 +1,12 @@
 .leftPanel {
     width: 320px;
     display: flex;
-    background: linear-gradient(rgba(1, 1, 0, 0.5), rgba(22, 0, 0, 0.5)), url("../../public/bg-image.png");
+    background: linear-gradient(rgba(1, 1, 0, 0.5), rgba(22, 0, 0, 0.5));
     // background-image: ;
     flex-direction: column;
     height: 100vh;
     overflow-y: scroll;
     scrollbar-width: thin;
-    padding: 11px;
     position: relative;
 
     scrollbar-width: 0px;

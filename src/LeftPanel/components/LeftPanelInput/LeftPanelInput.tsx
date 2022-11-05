@@ -6,6 +6,7 @@ import css from "./LeftPanelInput.module.scss";
 
 import API from "../../../fetch";
 import { getFoldersCount } from "../../../redux/selectors/folders";
+import useLocale from "../../../hooks/useLocale";
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const LeftPanelInput = () => {
           autoCapitalize="on"
           ref={input}
           min="2"
-          placeholder="Add new folder"
+          placeholder={useLocale("left_panel.button.add_new_folder")}
           onBlur={() => {
             // setShowInput(false);
           }}
@@ -62,7 +63,7 @@ const LeftPanelInput = () => {
             }, 1);
           }}
         >
-          <span>Add new folder</span>
+          <span>{useLocale("left_panel.button.add_new_folder")}</span>
         </button>
       )}
     </div>

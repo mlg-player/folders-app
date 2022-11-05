@@ -1,10 +1,7 @@
-import {
-  BrowserWindow,
-  app,
-  ipcMain,
-  ipcRenderer,
-} from "electron";
+import { BrowserWindow, app } from "electron";
 const path = require("path");
+
+const AppUrl = "http://localhost:1500/";
 
 declare global {
   interface Window {
@@ -26,7 +23,7 @@ const mainWindow = () => {
     minHeight: 800,
     // opacity: 0.5
   });
-  win.loadURL("http://localhost:1500/")
+  win.loadURL(AppUrl);
   return win;
 };
 app.whenReady().then(() => {

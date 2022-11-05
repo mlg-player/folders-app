@@ -22,8 +22,9 @@
     "noEmit": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "outDir": "dist"
-
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["typings/**/*", "src/**/*"],
   "exclude": ["build", "config", "node_modules", "public", "dist"]
