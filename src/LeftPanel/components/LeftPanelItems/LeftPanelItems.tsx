@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { isEqual } from "lodash";
-import { IFolder } from "../../../redux/store/FoldersStore";
+import { FoldersStore, IFolder } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelItems.module.scss";
-import ContextMenu from "../../../components/ContextMenu/ContextMenu";
-import useLocale from "../../../hooks/useLocale";
+import OnContextMenu from "./onContextMenu";
+import { useAppDispatch } from "../../../redux";
 
 const LeftPanelItems = (props: {
   folder: IFolder;
@@ -12,13 +12,17 @@ const LeftPanelItems = (props: {
 }) => {
   const { folder, active, onClick } = props;
   const [state, setState] = useState(null);
+  const [edit, setEdit] = useState(false);
+  const dispatch = useAppDispatch();
   return (
     <>
       <div
         className={`${css.folder} ${active ? css.active : ""}`}
         onClick={onClick}
         onContextMenu={(e) => {
-          setState(e);
+          if (!edit) {
+            setState(e);
+          }
         }}
       >
         {/* 
@@ -35,50 +39,18 @@ const LeftPanelItems = (props: {
         */}
       </div>
       {state && (
-        <ContextMenu onClose={() => setState(null)} action={state}>
-          <>
-            <div
-              className={`${css.folder} ${active ? css.active : ""}`}
-              onClick={onClick}
-              onContextMenu={(e) => {
-                setState(e);
-              }}
-            >
-              {/* 
-                  // TODO ICONS
-                  <div>
-                      <Icon></Icon>
-                  </div> 
-              */}
-              <p>{useLocale("label.edit")}</p>
-              {/*
-               <span>
-                  {folder?.order}
-                </span> 
-              */}
-            </div>
-            <div
-              className={`${css.folder} ${active ? css.active : ""}`}
-              onClick={onClick}
-              onContextMenu={(e) => {
-                setState(e);
-              }}
-            >
-              {/* 
-                  // TODO ICONS
-                  <div>
-                      <Icon></Icon>
-                  </div> 
-              */}
-              <p>{useLocale("main.label.delete")}</p>
-              {/* 
-                <span>
-                  {folder?.order}
-                </span> 
-              */}
-            </div>
-          </>
-        </ContextMenu>
+        <OnContextMenu
+          onClick={(e) => {
+            if (e === "edit") {
+              setEdit(true);
+            } else if (e === "delete") {
+              console.log('deleted')
+              dispatch(FoldersStore.actions.removeFolder(folder.id));
+            }
+          }}
+          action={state}
+          onClose={() => setState(null)}
+        />
       )}
     </>
   );

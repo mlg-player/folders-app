@@ -1,8 +1,8 @@
 .contextMenu {
   z-index: 100000;
   position: absolute;
-  background: rgba(0, 0, 0, 0.38);
-  padding: 10px;
+  background-color: rgba(47, 47, 47, 0.435);
   border-radius: 4px;
   user-select: none;
+  backdrop-filter: blur(10px);
 }

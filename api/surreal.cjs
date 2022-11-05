@@ -48,5 +48,9 @@ class surrealDB {
       tb: table,
     });
   }
+  static async delete({ id }) {
+    // Select all people records
+    await db.delete(id);
+  }
 }
 module.exports = surrealDB

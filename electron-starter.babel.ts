@@ -20,6 +20,7 @@ const mainWindow = () => {
       preload: path.join(__dirname, "/preload.babel.ts"),
     },
     minWidth: 600,
+    frame: false,
     minHeight: 800,
     // opacity: 0.5
   });

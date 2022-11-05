@@ -1,13 +1,20 @@
 import _ from "lodash";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import ContextItems from "./ContextItems";
 import "./ContextMenu.scss";
 const ContextMenu = (props: {
   action: React.MouseEvent<HTMLDivElement, MouseEvent>;
   onClose: () => void;
-  children: JSX.Element;
+  children?: JSX.Element;
+  list?: {
+    title: string;
+    onClick?: (id: string) => void;
+    id: string;
+  }[];
+  closeClickInside?: boolean;
 }) => {
-  const { action, onClose, children } = props;
+  const { action, onClose, children, closeClickInside, list } = props;
   const [coords, setCoords] = useState(null);
   const getPostition = () => {
     const elem = action?.target as HTMLElement;
@@ -34,18 +41,21 @@ const ContextMenu = (props: {
       window.removeEventListener("resize", getPostition, false);
     };
   }, [action]);
-  useEffect(() => {
-    const closeOutside = (e: MouseEvent) => {
-      const elem = e.target as HTMLElement;
-      if (!elem.closest(".contextMenu")) {
+  const closeOutside = useCallback((e: MouseEvent) => {
+    const elem = e.target as HTMLElement;
+    setTimeout(() => {
+      if (!elem.closest(".contextMenu") || closeClickInside) {
         onClose();
       }
-    };
+    }, 250);
+  }, []);
+  useEffect(() => {
     window.addEventListener("mousedown", closeOutside, false);
     return () => {
       window.removeEventListener("mousedown", closeOutside, false);
     };
   }, []);
+
   return (
     <ContextMenuRoot>
       <div
@@ -54,7 +64,15 @@ const ContextMenu = (props: {
           ...coords,
         }}
       >
-        {children}
+        {list
+          ? list.map((e) => (
+              <ContextItems
+                key={e.id}
+                onClick={() => e.onClick(e.id)}
+                title={e.title}
+              />
+            ))
+          : children}
       </div>
     </ContextMenuRoot>
   );

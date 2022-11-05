@@ -9,7 +9,6 @@ const io = require("socket.io")(http);
 app.use(cors());
 app.use(express.json());
 
-
 //  -----------------------------------
 // TODO SOCKETS
 io.on("connection", (socket) => {
@@ -17,7 +16,7 @@ io.on("connection", (socket) => {
   socket.join("folders");
   console.log(socket.folders);
 
-  socket.on('folders',  (message) =>  {
+  socket.on("folders", (message) => {
     console.log(message);
   });
   socket.on("disconnect", () => {
@@ -46,6 +45,16 @@ app.get("/getFolders", async (req, res) => {
     const select = await surrealDB.query({
       query: `SELECT * from folders`,
       table: "folders",
+    });
+    res.status(200).send(await select[0].result);
+  } catch (error) {
+    res.status(400).send("error");
+  }
+});
+app.get("/deleteFolder", async (req, res) => {
+  try {
+    const select = await surrealDB.delete({
+      id: `folders:${req.query.id}`,
     });
     res.status(200).send(await select[0].result);
   } catch (error) {

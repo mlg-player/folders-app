@@ -22,13 +22,16 @@ export const FoldersStore = createSlice({
   },
   reducers: {
     initial: (state, action: PayloadAction<IFolder[]>) => {
-      folderEntety.addMany(state.folders, action.payload)
+      folderEntety.addMany(state.folders, action.payload);
     },
     addFolder: (state, action: PayloadAction<IFolder>) => {
       folderEntety.addOne(state.folders, {
         ...action.payload,
         id: `folders:${action.payload.id}`,
       });
+    },
+    removeFolder: (state, action: PayloadAction<string>) => {
+      folderEntety.removeOne(state.folders, action.payload);
     },
   },
 });
