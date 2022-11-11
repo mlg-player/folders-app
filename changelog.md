@@ -1,5 +1,37 @@
 ## Changelogs List
 
+## 0.0.31 - Altaev Nurzhan
+
+### About
+
+- Fix ContextMenu positions
+- Added custom Context Menu for page
+- Small Left Panel style changes
+
+### File Logs
+
+#### Added: 
+- src/hooks/ContextMenuHandler.tsx
+
+- .eslintrc
+- electron-starter.babel.ts
+- locales/en.json
+- package.json
+- preload.babel.ts
+- public/index.html
+- src/App.tsx
+- src/LeftPanel/LeftPanel.module.scss
+- src/LeftPanel/LeftPanel.tsx
+- src/LeftPanel/components/LeftPanelInput/LeftPanelInput.module.scss
+- src/LeftPanel/components/LeftPanelItems/LeftPanelItems.tsx
+- src/components/ContextMenu/ContextItems.tsx
+- src/components/ContextMenu/ContextMenu.module.scss
+- src/components/ContextMenu/ContextMenu.tsx
+- src/hooks/useLocale.tsx
+- src/index.tsx
+- tsconfig.json
+- webpack.config.babel.ts
+
 ## 0.0.3 - Altaev Nurzhan
 
 ### About

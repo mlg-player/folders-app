@@ -3,7 +3,6 @@ import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const scriptFiles = /\.(js|jsx|ts|tsx)?$/;
-const styleFiles = /\.(css|scss)/;
 // const config = (): webpack.Configuration  => {
 const config = () => {
   return {
@@ -23,9 +22,9 @@ const config = () => {
           },
         },
         {
-          test: styleFiles,
-          use: ["style-loader", "css-loader", "sass-loader"],
-        },
+          test: /\.s(a|c)ss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader' ]
+        }
       ],
     },
     output: {

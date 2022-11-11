@@ -2,8 +2,6 @@ import _ from "lodash";
 import en from "../../locales/en.json";
 const DEFAULT_LANG = "en";
 
-
-
 // TODO In future add more locale support
 const localesList = {
   en: en,

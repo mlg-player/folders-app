@@ -4,6 +4,7 @@ import { FoldersStore, IFolder } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelItems.module.scss";
 import OnContextMenu from "./onContextMenu";
 import { useAppDispatch } from "../../../redux";
+import classNames from "classnames";
 
 const LeftPanelItems = (props: {
   folder: IFolder;
@@ -17,7 +18,10 @@ const LeftPanelItems = (props: {
   return (
     <>
       <div
-        className={`${css.folder} ${active ? css.active : ""}`}
+        className={classNames(css.folder, {
+          [`${css.active}`]: active || state,
+          "has-own-context": true
+        })}
         onClick={onClick}
         onContextMenu={(e) => {
           if (!edit) {

@@ -1,14 +1,15 @@
 import _ from "lodash";
 import React from "react";
 import css from "./ContextMenu.module.scss";
-const ContextItems = (props: { title: string; onClick: () => void }) => {
-  const { onClick, title } = props;
+const ContextItems = (props: { title: string; left?: JSX.Element; onClick: () => void }) => {
+  const { onClick, title, left } = props;
   return (
     <>
       <div className={css.contextItem} onClick={() => {
         console.log("CLICK")
         onClick()
       }}>
+        {left && <div className={css.leftItem}>{left}</div>}
         <p>{title}</p>
       </div>
     </>

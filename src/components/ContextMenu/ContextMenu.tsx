@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import ContextItems from "./ContextItems";
 import "./ContextMenu.scss";
@@ -8,28 +8,58 @@ const ContextMenu = (props: {
   onClose: () => void;
   children?: JSX.Element;
   list?: {
+    left?: JSX.Element;
     title: string;
     onClick?: (id: string) => void;
     id: string;
   }[];
   closeClickInside?: boolean;
+  customRoot?: string
 }) => {
-  const { action, onClose, children, closeClickInside, list } = props;
+  const { action, onClose, children, closeClickInside, list, customRoot } = props;
   const [coords, setCoords] = useState(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const getPostition = () => {
-    const elem = action?.target as HTMLElement;
-    const elemHeight = elem?.getBoundingClientRect().height;
-    if (action?.clientY + elemHeight > window.innerHeight) {
-      setCoords({
-        top: window.innerHeight - elemHeight,
-        left: action?.clientX,
-      });
-    } else {
-      setCoords({
-        top: action?.clientY,
-        left: action?.clientX,
-      });
+    const elem = contentRef?.current as HTMLElement;
+    const elemHeight = contentRef?.current?.getBoundingClientRect().height;
+    const elemWidth = contentRef?.current?.getBoundingClientRect().width;
+    console.groupCollapsed("contextPos");
+    console.log("elem", elem);
+    console.log("window.innerHeight", window.innerHeight);
+    console.log("elemHeight", elemHeight);
+    console.log("elemWidth", elemWidth);
+    console.log("action?.clientX", action?.clientX);
+    console.groupEnd();
+
+    const getHorizontalPos = () => {
+      if(action?.clientX + elemWidth > window.innerWidth) {
+        return {
+          left: "none",
+          right: 0,
+        }
+      } else {
+        return {
+          left: action?.clientX,
+        }
+      }
     }
+
+    const getVerticalPos = () => {
+      if(action?.clientY + elemHeight > window.innerHeight) {
+        return {
+          top: window.innerHeight - elemHeight,
+        }
+      } else {
+        return {
+          top: action?.clientY,
+        }
+      }
+    }
+    setCoords({
+      ...getVerticalPos(),
+      ...getHorizontalPos(),
+      visibility: "visible"
+    });
   };
 
   useEffect(() => {
@@ -44,10 +74,10 @@ const ContextMenu = (props: {
   const closeOutside = useCallback((e: MouseEvent) => {
     const elem = e.target as HTMLElement;
     setTimeout(() => {
-      if (!elem.closest(".contextMenu") || closeClickInside) {
+      if (!elem.closest(".contextMenu")) {
         onClose();
       }
-    }, 250);
+    }, 50);
   }, []);
   useEffect(() => {
     window.addEventListener("mousedown", closeOutside, false);
@@ -57,30 +87,40 @@ const ContextMenu = (props: {
   }, []);
 
   return (
-    <ContextMenuRoot>
+    <ContextMenuRoot customRoot={customRoot}>
       <div
         className="contextMenu"
         style={{
+          visibility: "hidden",
           ...coords,
         }}
+        ref={contentRef}
       >
         {list
           ? list.map((e) => (
-              <ContextItems
-                key={e.id}
-                onClick={() => e.onClick(e.id)}
-                title={e.title}
-              />
-            ))
+            <ContextItems
+              key={e.id}
+              onClick={() => {
+                e.onClick(e.id);
+                if (closeClickInside) {
+                  setTimeout(() => {
+                    onClose();
+                  }, 50);
+                }
+              }}
+              left={e.left}
+              title={e.title}
+            />
+          ))
           : children}
       </div>
     </ContextMenuRoot>
   );
 };
 
-const ContextMenuRoot = (props: { children: JSX.Element }) => {
-  const { children } = props;
-  const root = document.getElementById("context-root");
+const ContextMenuRoot = (props: { children: JSX.Element, customRoot?: string }) => {
+  const { children, customRoot = "context-root" } = props;
+  const root = document.getElementById(customRoot);
   return createPortal(children, root);
 };
 export default React.memo(ContextMenu, _.isEqual);

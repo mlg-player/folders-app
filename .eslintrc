@@ -1,6 +1,41 @@
 {
-  "rules": {
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "off"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard-with-typescript"
+    ],
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["./tsconfig.json"]
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-unused-vars": "error",
+        "array-callback-return": "warn",
+        "no-const-assign": "error",
+        "no-duplicate-imports": "error",
+        "no-use-before-define": "warn",
+        "class-methods-use-this": "warn",
+        "default-case": "warn",
+        "default-case-last": "error",
+        "max-lines": ["warn", {
+            "max": 300
+        }],
+        // eslint-disable-next-line no-magic-numbers
+        "max-params": ["warn", 3],
+        "no-alert": "error",
+        "no-empty-function": "error",
+        "no-eval": "error",
+        "no-extra-boolean-cast": "error",
+        "no-lonely-if": "warn",
+        "no-magic-numbers": "warn",
+        "no-negated-condition": "error"
+    }
   }
-}

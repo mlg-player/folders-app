@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import CenterPanel from "./ConterPanel/ConterPanel";
 import API from "./fetch";
+import ContextMenuHandler from "./hooks/ContextMenuHandler";
 import LeftPanel from "./LeftPanel/LeftPanel";
 import { useAppDispatch } from "./redux";
 import socket from "./redux/socketEventListener";
 import { FoldersStore } from "./redux/store/FoldersStore";
-
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -21,9 +21,9 @@ const App = () => {
       _socket();
     };
   }, []);
-
   return (
     <>
+    <ContextMenuHandler />
       <LeftPanel />
       <CenterPanel />
     </>

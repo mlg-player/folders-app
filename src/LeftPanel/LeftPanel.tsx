@@ -13,7 +13,6 @@ const LeftPanel = () => {
   const dispatch = useAppDispatch()
   return (
     <div className={css.leftPanel}>
-      <LeftPanelInput />
       <div className={css.folders}>
         {folders.map((folder, i) => (
           <LeftPanelItems
@@ -24,6 +23,8 @@ const LeftPanel = () => {
           />
         ))}
       </div>
+      <LeftPanelInput />
+
     </div>
   );
 };
