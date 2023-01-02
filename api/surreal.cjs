@@ -50,7 +50,8 @@ class surrealDB {
   }
   static async delete({ id }) {
     // Select all people records
-    await db.delete(id);
+    const res = await db.delete(id);
+    return res
   }
 }
 module.exports = surrealDB

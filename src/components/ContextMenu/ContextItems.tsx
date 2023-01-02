@@ -6,7 +6,6 @@ const ContextItems = (props: { title: string; left?: JSX.Element; onClick: () =>
   return (
     <>
       <div className={css.contextItem} onClick={() => {
-        console.log("CLICK")
         onClick()
       }}>
         {left && <div className={css.leftItem}>{left}</div>}

@@ -19,7 +19,6 @@ export const getCurrentFolder = createSelector(
     (state: RootState) => state.folders.folders.entities,
   ],
   (id, folders) => {
-    console.log(folders, id);
     return folders[id];
   }
 );

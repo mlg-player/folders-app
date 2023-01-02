@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ContextMenu from '../components/ContextMenu/ContextMenu';
 import useLocale from './useLocale';
 import {RefreshIcon} from '@fluentui/react-icons-mdl2'
@@ -18,6 +18,8 @@ const ContextMenuHandler = () => {
   useEffect(() => {
 
     const listener = (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
       const element = e?.target as HTMLElement;
       const hasOwnContext = element?.classList.contains("has-own-context")
       const isInput = element?.tagName?.toLocaleLowerCase() === "input"
@@ -26,20 +28,21 @@ const ContextMenuHandler = () => {
         setContextEvent(e);
       }
     }
-    window.addEventListener("contextmenu", listener, {
-      passive: true
-    })
+    window.addEventListener("contextmenu", listener)
     return () => {
       window.removeEventListener("contextmenu", listener)
     }
   }, [])
-
+  const onReloadHandle = useCallback(() => {
+    window.location.reload()
+  }, [])
   return (
     <>
       {contextEvent &&
         <ContextMenu
           customRoot="global-context-root"
           action={contextEvent as any}
+          closeClickInside
           onClose={() => setContextEvent(null)}
           list={[
             {
@@ -47,7 +50,7 @@ const ContextMenuHandler = () => {
               title: useLocale("app.label.reload"),
               left: <RefreshIcon />,
               onClick: () => {
-                window?.electronApp?.reloadWindow()
+                onReloadHandle()
               },
             },
             {
@@ -55,7 +58,7 @@ const ContextMenuHandler = () => {
               title: useLocale("app.label.reload"),
               left: <RefreshIcon />,
               onClick: () => {
-                window?.electronApp?.reloadWindow()
+                onReloadHandle()
               },
             },
             {
@@ -63,7 +66,7 @@ const ContextMenuHandler = () => {
               title: useLocale("app.label.reload"),
               left: <RefreshIcon />,
               onClick: () => {
-                window?.electronApp?.reloadWindow()
+                onReloadHandle()
               },
             },
             {
@@ -71,7 +74,7 @@ const ContextMenuHandler = () => {
               title: useLocale("app.label.reload"),
               left: <RefreshIcon />,
               onClick: () => {
-                window?.electronApp?.reloadWindow()
+                onReloadHandle()
               },
             },
             {
@@ -79,7 +82,7 @@ const ContextMenuHandler = () => {
               title: useLocale("app.label.reload"),
               left: <RefreshIcon />,
               onClick: () => {
-                window?.electronApp?.reloadWindow()
+                onReloadHandle()
               },
             },
           ]}

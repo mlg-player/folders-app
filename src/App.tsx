@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import CenterPanel from "./ConterPanel/ConterPanel";
+import CenterPanel from "./CenterPanel/CenterPanel";
 import API from "./fetch";
 import ContextMenuHandler from "./hooks/ContextMenuHandler";
 import LeftPanel from "./LeftPanel/LeftPanel";
@@ -11,19 +11,20 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const _socket = socket();
+    // TODO Sockets
+    // const _socket = socket();
     const getItems = async () => {
       const items = await new API().initState();
       dispatch(FoldersStore.actions.initial(items));
     };
     getItems();
     return () => {
-      _socket();
+      // _socket();
     };
   }, []);
   return (
     <>
-    <ContextMenuHandler />
+      <ContextMenuHandler />
       <LeftPanel />
       <CenterPanel />
     </>

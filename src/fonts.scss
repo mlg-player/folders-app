@@ -1,0 +1,17 @@
+$main-font: 'Roboto', sans-serif;
+
+$fonts: (
+  submain: 400 12px/16px $main-font,
+  body-text: 400 14px/20px $main-font,
+  title: 500 16px/24px $main-font,
+  caption-bold: 700 12px/16px $main-font,
+  large-text: 500 32px/32px $main-font,
+  project-title: 700 24px/26px $main-font
+);
+
+
+@mixin font($name) {
+  & {
+    font: map-get($map: $fonts, $key: $name)
+  }
+}

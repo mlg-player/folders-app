@@ -20,17 +20,8 @@ const ContextMenu = (props: {
   const [coords, setCoords] = useState(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const getPostition = () => {
-    const elem = contentRef?.current as HTMLElement;
     const elemHeight = contentRef?.current?.getBoundingClientRect().height;
     const elemWidth = contentRef?.current?.getBoundingClientRect().width;
-    console.groupCollapsed("contextPos");
-    console.log("elem", elem);
-    console.log("window.innerHeight", window.innerHeight);
-    console.log("elemHeight", elemHeight);
-    console.log("elemWidth", elemWidth);
-    console.log("action?.clientX", action?.clientX);
-    console.groupEnd();
-
     const getHorizontalPos = () => {
       if(action?.clientX + elemWidth > window.innerWidth) {
         return {

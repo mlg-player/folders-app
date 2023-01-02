@@ -15,6 +15,6 @@ const setupStore = () => {
 export type RootState = ReturnType<typeof mainReducer>;
 export type MainStore = ReturnType<typeof setupStore>;
 export type MainDispatch = MainStore['dispatch'];
-export const useAppDispatch = () => useDispatch<MainDispatch>()
+export const useAppDispatch = () => useDispatch<MainDispatch>();
 const store = setupStore();
 export default store;

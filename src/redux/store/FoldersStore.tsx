@@ -8,6 +8,7 @@ export type IFolder = {
   name: string;
   order?: number;
   id?: string;
+  type?: string
 };
 
 const folderEntety = createEntityAdapter<IFolder>({

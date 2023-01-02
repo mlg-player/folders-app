@@ -1,6 +1,6 @@
 {
   "name": "deev",
-  "version": "0.0.31",
+  "version": "0.0.4",
   "main": "electron-starter.babel.ts",
   "license": "MIT",
   "type": "module",

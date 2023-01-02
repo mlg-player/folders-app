@@ -18,6 +18,7 @@ const LeftPanelInput = () => {
     const item = {
       id: uniqueId(),
       name: value,
+      type: 'folder'
     };
     new API().addFolder({ ...item, order: order });
     dispatch(FoldersStore.actions.addFolder(item));

@@ -11,8 +11,10 @@ class API {
     );
   }
 
-  async getRequest (url: string) {
-    const req = await fetch(`${this.#uri}${url}`)
+  async getRequest (url: string, method?: string) {
+    const req = await fetch(`${this.#uri}${url}`, {
+      method: method ?? "GET"
+    })
     const body = await req.json();
     return body
   }
@@ -23,6 +25,10 @@ class API {
 
   addFolder(props: IFolder) {
     return this.getRequest(`addFolder?name=${props.name}&id=${props.id}`);
+  }
+
+  deleteFolder(id: string) {
+    return this.getRequest(`folder?id=${id}`, 'DELETE')
   }
 }
 

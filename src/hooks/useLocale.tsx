@@ -9,7 +9,6 @@ const localesList = {
 
 const getCurrentLocale = (): string => {
   const lang = localStorage.getItem("lang");
-  console.log(lang);
   if (!lang) {
     localStorage.setItem("lang", DEFAULT_LANG);
     return DEFAULT_LANG;

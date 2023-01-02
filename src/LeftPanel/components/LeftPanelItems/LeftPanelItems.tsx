@@ -5,6 +5,18 @@ import css from "./LeftPanelItems.module.scss";
 import OnContextMenu from "./onContextMenu";
 import { useAppDispatch } from "../../../redux";
 import classNames from "classnames";
+import RadioButton from "../../../icons/RadioButton";
+import API from "../../../fetch";
+
+const getIconByType = (type: string) => {
+  switch (type) {
+    case "folder":
+      return <RadioButton />;
+
+    default:
+      return <></>;
+  }
+};
 
 const LeftPanelItems = (props: {
   folder: IFolder;
@@ -19,22 +31,20 @@ const LeftPanelItems = (props: {
     <>
       <div
         className={classNames(css.folder, {
-          [`${css.active}`]: active || state,
-          "has-own-context": true
+          [`${css.active}`]: active,
+          [`${css.hovered}`]: state,
+          "has-own-context": true,
         })}
         onClick={onClick}
         onContextMenu={(e) => {
+          e.preventDefault();
           if (!edit) {
             setState(e);
           }
         }}
       >
-        {/* 
-          // TODO ICONS
-          <div>
-              <Icon></Icon>
-          </div> 
-        */}
+        {folder.type && getIconByType(folder.type)}
+
         <p>{folder?.name}</p>
         {/* 
           <span>
@@ -48,7 +58,7 @@ const LeftPanelItems = (props: {
             if (e === "edit") {
               setEdit(true);
             } else if (e === "delete") {
-              console.log('deleted')
+              new API().deleteFolder(folder.id)
               dispatch(FoldersStore.actions.removeFolder(folder.id));
             }
           }}
