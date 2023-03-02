@@ -5,7 +5,8 @@ import { FoldersStore } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelInput.module.scss";
 
 import API from "../../../fetch";
-import { getFoldersCount } from "../../../redux/selectors/folders";
+import folderSelectors from "../../../redux/selectors/folders";
+const { getFoldersCount } = folderSelectors
 import useLocale from "../../../hooks/useLocale";
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);

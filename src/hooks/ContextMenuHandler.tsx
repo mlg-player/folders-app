@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ContextMenu from '../components/ContextMenu/ContextMenu';
+import Reload from '../icons/Reload';
 import useLocale from './useLocale';
-import {RefreshIcon} from '@fluentui/react-icons-mdl2'
+
 
 declare global {
   interface Window  {
@@ -48,7 +49,7 @@ const ContextMenuHandler = () => {
             {
               id: "1",
               title: useLocale("app.label.reload"),
-              left: <RefreshIcon />,
+              left: <Reload />,
               onClick: () => {
                 onReloadHandle()
               },
@@ -56,7 +57,7 @@ const ContextMenuHandler = () => {
             {
               id: "2",
               title: useLocale("app.label.reload"),
-              left: <RefreshIcon />,
+              left: <Reload />,
               onClick: () => {
                 onReloadHandle()
               },
@@ -64,7 +65,7 @@ const ContextMenuHandler = () => {
             {
               id: "3",
               title: useLocale("app.label.reload"),
-              left: <RefreshIcon />,
+              left: <Reload />,
               onClick: () => {
                 onReloadHandle()
               },
@@ -72,7 +73,7 @@ const ContextMenuHandler = () => {
             {
               id: "4",
               title: useLocale("app.label.reload"),
-              left: <RefreshIcon />,
+              left: <Reload />,
               onClick: () => {
                 onReloadHandle()
               },
@@ -80,7 +81,7 @@ const ContextMenuHandler = () => {
             {
               id: "5",
               title: useLocale("app.label.reload"),
-              left: <RefreshIcon />,
+              left: <Reload />,
               onClick: () => {
                 onReloadHandle()
               },

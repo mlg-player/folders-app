@@ -1,46 +1,51 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector, EntityId } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import { iItem } from "../store/FolderItems";
 import { IFolder } from "../store/FoldersStore";
 
-type Selector<S> = (state: RootState) => S;
-
-export const getAllFoldersList = createSelector(
-  [(state: RootState) => state.folders.folders],
-  (folders) =>
-    Object.values(folders.entities).sort((a, b) => b?.order - a?.order)
-);
-export const getCurrentFolderId = createSelector([(state: RootState) => state.current.folder_id], (id) =>
-id
-);
-export const getCurrentFolder = createSelector(
-  [
-    (state: RootState) => state.current.folder_id,
-    (state: RootState) => state.folders.folders.entities,
-  ],
-  (id, folders) => {
-    return folders[id];
-  }
-);
-export const getFolderItems = createSelector(
-  [
-    (state: RootState) => state.current.folder_id,
-    (state: RootState) => state.items.items.entities,
-  ],
-  (id, items) => {
-    const arr: iItem[] = [];
-    for (const item in items){ 
-      if(items[item].folder_id === id){
-        arr.push(items[item]);
-      } 
-    }
-    return arr;
-  }
-);
-
-export const getFoldersCount = createSelector(
-  [
-    (state: RootState) => state.folders.folders.ids.length
-  ],
-  (length) => length 
-)
+const folderSelectors = {
+    getAllFoldersList: createSelector(
+        [(state: RootState) => state.folders.folders.ids],
+        (folders) => folders
+    ),
+    getActiveFolder: createSelector(
+        [
+            (state: RootState, active: EntityId) =>
+                state.folders.folders.entities[active],
+        ],
+        (folders) => folders as IFolder
+    ),
+    getCurrentFolderId: createSelector(
+        [(state: RootState) => state.current.folder_id],
+        (id) => id
+    ),
+    getCurrentFolder: createSelector(
+        [
+            (state: RootState) => state.current.folder_id,
+            (state: RootState) => state.folders.folders.entities,
+        ],
+        (id, folders) => {
+            return folders[id];
+        }
+    ),
+    getFolderItems: createSelector(
+        [
+            (state: RootState) => state.current.folder_id,
+            (state: RootState) => state.items.items.entities,
+        ],
+        (id, items) => {
+            const arr: iItem[] = [];
+            for (const item in items) {
+                if (items[item].folder_id === id) {
+                    arr.push(items[item]);
+                }
+            }
+            return arr;
+        }
+    ),
+    getFoldersCount: createSelector(
+        [(state: RootState) => state.folders.folders.ids.length],
+        (length) => length
+    ),
+};
+export default folderSelectors

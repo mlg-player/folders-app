@@ -5,7 +5,9 @@ const ContextItems = (props: { title: string; left?: JSX.Element; onClick: () =>
   const { onClick, title, left } = props;
   return (
     <>
-      <div className={css.contextItem} onClick={() => {
+      <div className={`has-own-context ${css.contextItem}`} onMouseDown={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
         onClick()
       }}>
         {left && <div className={css.leftItem}>{left}</div>}

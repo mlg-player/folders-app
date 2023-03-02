@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { isEqual } from "lodash";
+import _, { isEqual } from "lodash";
 import { FoldersStore, IFolder } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelItems.module.scss";
 import OnContextMenu from "./onContextMenu";
-import { useAppDispatch } from "../../../redux";
+import { useAppDispatch, useAppSelector } from "../../../redux";
 import classNames from "classnames";
 import RadioButton from "../../../icons/RadioButton";
 import API from "../../../fetch";
+import { EntityId } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import folderSelectors from "../../../redux/selectors/folders";
 
-const getIconByType = (type: string) => {
+export const getIconByType = (type: string) => {
   switch (type) {
     case "folder":
       return <RadioButton />;
@@ -19,11 +22,15 @@ const getIconByType = (type: string) => {
 };
 
 const LeftPanelItems = (props: {
-  folder: IFolder;
+  id: EntityId;
   active?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }) => {
-  const { folder, active, onClick } = props;
+  const { id, active, onClick } = props;
+  const folder = useAppSelector(
+      (store) => folderSelectors.getActiveFolder(store, id),
+      _.isEqual
+  );
   const [state, setState] = useState(null);
   const [edit, setEdit] = useState(false);
   const dispatch = useAppDispatch();
@@ -63,7 +70,10 @@ const LeftPanelItems = (props: {
             }
           }}
           action={state}
-          onClose={() => setState(null)}
+          onClose={() => {
+            setEdit(false)
+            setState(null)
+          }}
         />
       )}
     </>

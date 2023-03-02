@@ -1,8 +1,13 @@
+@import '../../../fonts';
+
 .title{
-    height: 40px;
-    width: 100%;    
+    margin: 10px;
     // background-color: var(--stroke);
     display: flex;
     align-items: center;
     padding-left: 10px;
+    @include font("project-title");
+    p {
+        padding: 0 10px;
+    }
 }
