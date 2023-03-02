@@ -11,28 +11,28 @@ export type IFolder = {
   type?: string
 };
 
-const folderEntety = createEntityAdapter<IFolder>({
+const folderEntity = createEntityAdapter<IFolder>({
   selectId: (i) => i?.id,
-  sortComparer: (i) => i?.order,
+  sortComparer: (a) => a?.order,
 });
 
 export const FoldersStore = createSlice({
   name: "folderStore",
   initialState: {
-    folders: folderEntety.getInitialState(),
+    folders: folderEntity.getInitialState(),
   },
   reducers: {
     initial: (state, action: PayloadAction<IFolder[]>) => {
-      folderEntety.addMany(state.folders, action.payload);
+      folderEntity.addMany(state.folders, action.payload);
     },
     addFolder: (state, action: PayloadAction<IFolder>) => {
-      folderEntety.addOne(state.folders, {
+      folderEntity.addOne(state.folders, {
         ...action.payload,
         id: `folders:${action.payload.id}`,
       });
     },
     removeFolder: (state, action: PayloadAction<string>) => {
-      folderEntety.removeOne(state.folders, action.payload);
+      folderEntity.removeOne(state.folders, action.payload);
     },
   },
 });

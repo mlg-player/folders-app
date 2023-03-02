@@ -1,5 +1,39 @@
 ## Changelogs List
 
+## 0.0.5 - Altaev Nurzhan
+
+### About
+
+- Added socket
+- Added icons
+### File Logs
+
+### Changed 
+- api/index.cjs
+- src/App.tsx
+- src/CenterPanel/CenterPanel.tsx
+- src/CenterPanel/components/EmptyState/EmptyState.tsx
+- src/CenterPanel/components/Header/Header.module.scss
+- src/CenterPanel/components/Header/Header.tsx
+- src/LeftPanel/LeftPanel.tsx
+- src/LeftPanel/components/LeftPanelInput/LeftPanelInput.tsx
+- src/LeftPanel/components/LeftPanelItems/LeftPanelItems.tsx
+- src/LeftPanel/components/LeftPanelItems/onContextMenu.tsx
+- src/components/ContextMenu/ContextItems.tsx
+- src/components/ContextMenu/ContextMenu.module.scss
+- src/components/ContextMenu/ContextMenu.tsx
+- src/hooks/ContextMenuHandler.tsx
+- src/redux/index.tsx
+- src/redux/selectors/folders.tsx
+- src/redux/socketEventListener.tsx
+- src/redux/store/FolderItems.tsx
+- src/redux/store/FoldersStore.tsx
+
+### Added
+- src/icons/Delete.tsx
+- src/icons/Edit.tsx
+- src/icons/Reload.tsx
+---
 ## 0.0.4 - Altaev Nurzhan
 
 ### About
@@ -26,7 +60,7 @@
 - src/components/Checkbox/Checkbox.scss
 - src/components/Checkbox/Checkbox.tsx
 - src/fonts.scss
-#### Added: 
+#### Changed: 
 - api/index.cjs
 - api/surreal.cjs
 - App.tsx

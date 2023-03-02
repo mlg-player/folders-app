@@ -16,6 +16,9 @@ const socket = () => {
   socket.listener('connection', () => {
     console.log('event come')
   })
+  socket.listener('connected', () => {
+    console.log('event come')
+  })
   socket.listener('folders', (res: any) => {
     console.log(res)
   })

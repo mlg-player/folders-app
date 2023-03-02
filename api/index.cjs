@@ -3,42 +3,52 @@ const surrealDB = require("./surreal.cjs");
 const cors = require("cors");
 const { serverPort } = require("./constatns.cjs");
 const app = express();
-const http = require("http").Server(app);
-// const io = require("socket.io")(http);
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
+const socket = require("socket.io-client")
 
 app.use(cors());
 app.use(express.json());
 
 //  -----------------------------------
 // TODO SOCKETS
-// io.on("connection", (socket) => {
-//   console.log("User Connected");
-//   socket.join("folders");
-//   console.log(socket.folders);
+io.on("connection", (socket) => {
+  socket.emit('connected', {message: 'a new client connected'})
+  console.log("User Connected");
+  socket.join("folders");
+  console.log(socket.folders);
 
-//   socket.on("folders", (message) => {
-//     console.log(message);
-//   });
-//   socket.on("disconnect", () => {
-//     console.log("User Disconnected");
-//   });
-// });
+  socket.on("folders", (message) => {
+    socket.emit("folders", {
+      message: "folders event come"
+    })
+    console.log(message);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User Disconnected");
+  });
+});
 //  -----------------------------------
 
 app.get("/addFolder", (req, res) => {
   try {
-    const { name, id, order } = req.query;
-    surrealDB.createTable({
-      props: {
-        name: name,
-        id: id,
-        type: "folder",
-      },
-      table: "folders",
-    });
-    res.status(200).send("ok");
+      const { name, id, order } = req.query;
+      surrealDB.createTable({
+          props: {
+              name: name,
+              id: id,
+              type: "folder",
+          },
+          table: "folders",
+      });
+      res.status(200).send({
+          response: "ok",
+      });
   } catch (error) {
-    res.status(400).send("error");
+      res.status(400).send({
+          response: "error",
+      });
   }
 });
 app.get("/getFolders", async (req, res) => {

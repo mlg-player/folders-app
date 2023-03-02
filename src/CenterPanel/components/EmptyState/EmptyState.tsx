@@ -14,7 +14,7 @@ const EmptyState = ({
     } else {
       return useLocale("center_panel.label.select_a_folder");
     }
-  }, []);
+  }, [type]);
   return (
     <div className={css.wrapper}>
       <div>{typeText}</div>

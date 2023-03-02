@@ -10,7 +10,7 @@ import {
     folder_id: string,
     created_at: number,
   }
-  const items = createEntityAdapter<iItem>({})
+  const items = createEntityAdapter<iItem>({});
   
   export const FolderItems = createSlice({
     name: "folderItems",

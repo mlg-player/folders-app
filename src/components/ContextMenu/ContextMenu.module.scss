@@ -1,3 +1,5 @@
+@import '../../fonts';
+
 .contextItem {
   height: 40px;
   color: var(--white);
@@ -12,13 +14,20 @@
   user-select: none;
   border-radius: 4px;
   min-width: 200px;
+
+  @include font("title");
+
   &:hover {
     cursor: pointer;
     background: rgba(61, 61, 61, 0.316);
   }
 }
-.leftItem{ 
-  height: 15px;
-  width: 15px;
-  margin-bottom: 5px;
+
+.leftItem {
+  height: 20px;
+  width: 20px;
+  svg {
+    height: 20px;
+    width: 20px;
+  }
 }

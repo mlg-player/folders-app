@@ -19,7 +19,7 @@ const ContextMenu = (props: {
   const { action, onClose, children, closeClickInside, list, customRoot } = props;
   const [coords, setCoords] = useState(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const getPostition = () => {
+  const getPosition = () => {
     const elemHeight = contentRef?.current?.getBoundingClientRect().height;
     const elemWidth = contentRef?.current?.getBoundingClientRect().width;
     const getHorizontalPos = () => {
@@ -54,14 +54,14 @@ const ContextMenu = (props: {
   };
 
   useEffect(() => {
-    getPostition();
+    getPosition();
   }, []);
   useEffect(() => {
-    window.addEventListener("resize", getPostition, false);
+    window.addEventListener("resize", getPosition, false);
     return () => {
-      window.removeEventListener("resize", getPostition, false);
+      window.removeEventListener("resize", getPosition, false);
     };
-  }, [action]);
+  }, []);
   const closeOutside = useCallback((e: MouseEvent) => {
     const elem = e.target as HTMLElement;
     setTimeout(() => {

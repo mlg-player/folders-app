@@ -11,15 +11,14 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // TODO Sockets
-    // const _socket = socket();
+    const _socket = socket();
     const getItems = async () => {
       const items = await new API().initState();
       dispatch(FoldersStore.actions.initial(items));
     };
     getItems();
     return () => {
-      // _socket();
+      _socket();
     };
   }, []);
   return (

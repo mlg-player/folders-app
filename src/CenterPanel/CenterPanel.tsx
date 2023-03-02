@@ -1,18 +1,23 @@
 import _ from "lodash";
 import React from "react";
-import { useSelector } from "react-redux";
-import { getCurrentFolder, getFolderItems } from "../redux/selectors/folders";
+import { useAppSelector } from "../redux";
+import folderSelectors from "../redux/selectors/folders";
+const { getCurrentFolder, getFolderItems } = folderSelectors;
 import EmptyState from "./components/EmptyState/EmptyState";
 import Header from "./components/Header/Header";
 import './CenterPanel.scss'
 const CenterPanel = () => {
-  const currentFolder = useSelector(getCurrentFolder)
-  const folderItems = useSelector(getFolderItems)
-  
+  const currentFolder = useAppSelector(getCurrentFolder)
+  const folderItems = useAppSelector(getFolderItems)
+  if (!currentFolder) return (
+      <div className="center-panel">
+          <EmptyState type="selectFolder" />
+      </div>
+  );
   return (
     <div className="center-panel">
-      <Header title={currentFolder?.name} />
-      {!folderItems.length && <EmptyState />}
+      <Header title={currentFolder?.name} type={currentFolder?.type} />
+      {!folderItems.length && <EmptyState type='addItems' />}
       {folderItems.length ? <>
         contents
       </> : <></>}
