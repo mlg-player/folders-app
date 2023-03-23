@@ -56,6 +56,9 @@ const config = () => {
         },
       },
     },
+    devServer: {
+      allowedHosts: 'all',
+    },  
   };
 };
 

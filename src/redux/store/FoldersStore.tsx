@@ -9,11 +9,12 @@ export type IFolder = {
   order?: number;
   id?: string;
   type?: string
+  ts?: number
 };
 
 const folderEntity = createEntityAdapter<IFolder>({
   selectId: (i) => i?.id,
-  sortComparer: (a) => a?.order,
+  sortComparer: (a, b) => a?.order > b?.order ? 1 : -1
 });
 
 export const FoldersStore = createSlice({

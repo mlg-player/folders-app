@@ -1,5 +1,4 @@
 import { io, Socket } from "socket.io-client";
-import { serverPort } from "../api/constatns.cjs";
 const contr = require("lodash-contrib");
 
 class socketClient {
@@ -22,10 +21,10 @@ class socketClient {
 
   constructor() {
     this.#connection = false;
-    this.#baseURL = document.location.href.replace(
+    this.#baseURL = document.location.port?.length > 0 ? document.location.href.replace(
       document.location.port,
-      `${serverPort}`
-    );
+      `${3000}`
+      ) : `https://r18.ksixen.xyz`;
 
     this.#socket = io(this.#baseURL, {
       auth: {

@@ -31,7 +31,7 @@ const OnContextMenu = (props: {
           },
         ]}
         onClose={onClose}
-        action={action}
+        event={action}
       />
     </>
   );

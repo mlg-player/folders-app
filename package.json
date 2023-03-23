@@ -1,18 +1,14 @@
 {
   "name": "deev",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "electron-starter.babel.ts",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "client": "webpack-dev-server --port 1500 --mode development",
+    "webpack": "webpack-dev-server --port 1500",
     "build": "webpack --config webpack.config.babel.ts",
-    "database": "surreal.exe start --log debug --user root --pass root file:./db-data",
-    "api": "nodemon api/index.cjs",
     "electron": "electron .",
-    "server": "concurrently \"npm run api\" \"npm run database\"",
-    "front": "concurrently \"npm run client\" \"npm run electron .\"",
-    "start": "concurrently \"npm run server\" \"npm run front\""
+    "start": "concurrently \"npm run webpack\" \"npm run electron .\""
   },
   "dependencies": {
     "@babel/register": "^7.18.9",
@@ -36,6 +32,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.55.0",
+    "serve-static": "^1.15.0",
     "style-loader": "^3.3.1",
     "surrealdb.js": "^0.5.0",
     "uuid": "^9.0.0"

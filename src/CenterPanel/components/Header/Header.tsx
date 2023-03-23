@@ -10,8 +10,8 @@ const Header = (props: { title: string; type?: string }) => {
   const onMore = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.preventDefault();
-      window.socket.emit("folders", {ev: "folders event emit"})
-      // setContextAction(e);
+      // window.socket.emit("folders", {ev: "folders event emit"})
+      setContextAction(e?.currentTarget);
     },
     []
   );
@@ -24,7 +24,7 @@ const Header = (props: { title: string; type?: string }) => {
       </div>
       {contextAction && (
         <ContextMenu
-          action={contextAction}
+          target={contextAction}
           closeClickInside
           onClose={() => {
             setContextAction(null);

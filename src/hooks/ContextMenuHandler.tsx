@@ -42,7 +42,7 @@ const ContextMenuHandler = () => {
       {contextEvent &&
         <ContextMenu
           customRoot="global-context-root"
-          action={contextEvent as any}
+          event={contextEvent as any}
           closeClickInside
           onClose={() => setContextEvent(null)}
           list={[

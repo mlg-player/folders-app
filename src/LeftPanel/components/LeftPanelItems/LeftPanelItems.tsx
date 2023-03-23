@@ -45,6 +45,7 @@ const LeftPanelItems = (props: {
         onClick={onClick}
         onContextMenu={(e) => {
           e.preventDefault();
+          e.stopPropagation();
           if (!edit) {
             setState(e);
           }

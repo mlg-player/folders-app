@@ -1,5 +1,49 @@
 ## Changelogs List
 
+## 0.0.6 - Altaev Nurzhan
+
+### About
+
+- Added authorization
+- Backend was moved to repo [folders-backend](https://github.com/ksixen/folders-backend);
+- Added custom global storage
+### File Logs
+
+### Added 
+- src/hooks/CustomPortalRoot.tsx
+- src/hooks/customEventListeners.tsx
+- src/hooks/customState.tsx
+- src/hooks/tokenManagement.ts
+- src/Dialogs/LoginDialog/LoginDialog.module.scss
+- src/Dialogs/LoginDialog/LoginDialog.tsx
+
+### Deleted
+- api/constatns.cjs
+- api/index.cjs
+- api/surreal.cjs
+- api/socket/index.cjs
+
+### Changed
+- locales/en.json
+- package.json
+- public/index.html
+- src/App.tsx
+- src/CenterPanel/components/Header/Header.tsx
+- src/Dialogs/index.ts
+- src/LeftPanel/LeftPanel.module.scss
+- src/LeftPanel/LeftPanel.tsx
+- src/LeftPanel/components/LeftPanelInput/LeftPanelInput.tsx
+- src/LeftPanel/components/LeftPanelItems/LeftPanelItems.tsx
+- src/LeftPanel/components/LeftPanelItems/onContextMenu.tsx
+- src/components/ContextMenu/ContextMenu.tsx
+- src/fetch.ts
+- src/fonts.scss
+- src/hooks/ContextMenuHandler.tsx
+- src/index.scss
+- src/redux/store/FoldersStore.tsx
+- src/socketClient.ts
+- webpack.config.babel.ts
+---
 ## 0.0.5 - Altaev Nurzhan
 
 ### About

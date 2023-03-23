@@ -1,10 +1,14 @@
 {
-  "main.label.edit": "Edit",
-  "main.label.delete": "Delete",
-  "main.label.rename": "Rename",
-  "center_panel.label.add_notes": "Add Notes",
-  "left_panel.button.add_new_folder": "Add new folder",
-  "center_panel.label.select_a_folder": "Select a folder",
-  "app.label.close": "Close",
-  "app.label.reload": "Reload"
+    "main.label.edit": "Edit",
+    "main.label.delete": "Delete",
+    "main.label.rename": "Rename",
+    "center_panel.label.add_notes": "Add Notes",
+    "left_panel.button.add_new_folder": "Add new project",
+    "center_panel.label.select_a_folder": "Select a project",
+    "app.label.close": "Close",
+    "app.label.reload": "Reload",
+    "dialog.login.sign_in": "Sign in",
+    "dialog.login.you_dont_have_an_account": "You dont have an account?",
+    "dialog.login.you_already_have_an_account": "You already have an account?",
+    "dialog.login.sign_up": "Sign up"
 }

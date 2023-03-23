@@ -8,6 +8,7 @@ import API from "../../../fetch";
 import folderSelectors from "../../../redux/selectors/folders";
 const { getFoldersCount } = folderSelectors
 import useLocale from "../../../hooks/useLocale";
+
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const LeftPanelInput = () => {
       name: value,
       type: 'folder'
     };
-    new API().addFolder({ ...item, order: order });
+    new API().addFolder({ ...item, order: order, ts: +new Date()});
     dispatch(FoldersStore.actions.addFolder(item));
     setValue("");
   }, [value, order]);

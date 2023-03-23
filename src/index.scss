@@ -1,16 +1,13 @@
 :root {
-    --bg-center: #1D1E29;
-    --bg-left: rgb(41, 41, 41);
-    --bg-left-hover: rgb(34, 34, 34);
-    --stroke: rgba(33, 33, 33, 0.7);
-    --white: rgb(237, 237, 237);
-    --gray: #D9D9D9;
+    --bg-center: #2B2E41;
+    --white: #FBF5F7;
     --alert: #DA5151;
-    --text-25: rgba(255, 255, 255, .25);
-    --text-50: rgba(255, 255, 255, .50);
-    --text-85: rgba(255, 255, 255, .85);
-    --text-100: rgba(255, 255, 255, 1);
+    --text-25:rgba(251, 245, 247, 0.25);
+    --text-50: rgba(251, 245, 247, 0.55);
+    --text-85: rgba(251, 245, 247, 0.85);
+    --text-100: #FBF5F7;
 }
+
 
 * {
     padding: 0;
@@ -28,4 +25,27 @@ html {
 #root {
     display: flex;
     color: var(--white);
+}
+
+#dialog-root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > * {
+        z-index: 1000;
+    }
+    &.active::after {
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.36);
+        content: "";
+    }
+
 }

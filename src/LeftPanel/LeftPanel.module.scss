@@ -14,6 +14,7 @@
     /* IE and Edge */
     scrollbar-width: none;
 
+    width: clamp(320px, 40%, 500px);
     &::-webkit-scrollbar {
         display: none;
     }
@@ -21,4 +22,7 @@
     .add-folder {
         height: 100px;
     }
+}
+.folders {
+    height: 100%;
 }
