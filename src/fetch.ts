@@ -24,14 +24,17 @@ class API {
                 "Content-Type": "application/json",
             },
         });
+        /** Response status checker */
         if (req.status === 401) {
+            /** If is unauthorized person then set "logged"  to false and delete token from cookies */
             useGlobalDispatcher((state) => ({ ...state, logged: false }));
             deleteToken("token", "/", "localhost");
-        } else {
-        }
-        if (req.ok === false) {
+            return undefined;
+        } else if (req.ok === false) {
+            /** If  request got status errors, return nothing */
             return undefined;
         } else {
+            /** If  request is ok, return response */
             const body = await req.json();
             return body;
         }
@@ -42,18 +45,14 @@ class API {
     }
 
     addFolder(props: IFolder) {
-        return this.getRequest(
-            `addFolder`,
-            props,
-            "POST"
-        );
+        return this.getRequest(`addFolder`, props, "POST");
     }
 
     deleteFolder(id: string) {
-        return this.getRequest(`folder`, { id: id }, "DELETE");
+        return this.getRequest(`deleteFolder`, { id: id }, "DELETE");
     }
 
-    register(obj: { login: string; password: string, name: string }) {
+    register(obj: { login: string; password: string; name: string }) {
         return this.getRequest(`register`, obj, "POST");
     }
     login(obj: { login: string; password: string }) {

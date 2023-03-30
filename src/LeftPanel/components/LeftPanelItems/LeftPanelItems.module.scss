@@ -1,7 +1,7 @@
 @import '../../../fonts';
 
 .folder {
-    height: 34px;
+    height: 30px;
     padding: 5px 10px;
 
     display: flex;
@@ -13,10 +13,10 @@
     @include font("title");
 
     svg {
-        height: 24px;
-        width: 24px;
-        min-width: 24px;
-        min-height: 24px;
+        height: 20px;
+        width: 20px;
+        min-width: 20px;
+        min-height: 20px;
     }
 
     p {

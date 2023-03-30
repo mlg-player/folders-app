@@ -78,7 +78,7 @@
     p {
 
         color: var(--text-50);
-        @include font("caption-bold");
+        @include font("submain");
         span {
             color: var(--text-100);
             cursor: pointer;
@@ -95,7 +95,7 @@
 }
 .submitButton {
     background-color: #00D649;
-    @include font("caption-bold");
+    @include font("submain");
     color: var(--text-100);
     width: 100%;
     height: 30px;
