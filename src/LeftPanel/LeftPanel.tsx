@@ -1,18 +1,22 @@
+import React from "react";
+import css from "./LeftPanel.module.scss";
+
 import _ from "lodash";
-import React, { useCallback, useRef, useState } from "react";
+import { useAppDispatch } from "@redux";
 import { useSelector } from "react-redux";
-import LoginDialog from "../Dialogs/LoginDialog/LoginDialog";
-import API from "../fetch";
-import { CustomPortalRoot } from "../hooks/CustomPortalRoot";
-import { useGlobalStorage } from "../hooks/customState";
-import { getCookie } from "../hooks/tokenManagement";
-import useLocale from "../hooks/useLocale";
-import { useAppDispatch } from "../redux";
-import { setCurrentFolder } from "../redux/actions/LeftPanelActions";
-import folderSelectors from "../redux/selectors/folders";
+
+import LoginDialog from "@dialogs/LoginDialog/LoginDialog";
+
+import { useGlobalStorage } from "@hooks/customState";
+import { getCookie } from "@hooks/tokenManagement";
+
+import folderSelectors from "@redux/selectors/folders";
+import { setCurrentFolder } from "@redux/actions/LeftPanelActions";
+
 import LeftPanelInput from "./components/LeftPanelInput/LeftPanelInput";
 import LeftPanelItems from "./components/LeftPanelItems/LeftPanelItems";
-import css from "./LeftPanel.module.scss";const { getAllFoldersList, getCurrentFolderId } = folderSelectors;
+
+const { getAllFoldersList, getCurrentFolderId } = folderSelectors;
 
 const LeftPanel = () => {
     const folders = useSelector(getAllFoldersList);
@@ -37,9 +41,13 @@ const LeftPanel = () => {
                     />
                 ))}
             </div>
-            { globalStorage?.logged === false && <LoginDialog onLogin={() => {
-                dispatcher((s) => ({...s, logged: true}))
-            }} />}
+            {globalStorage?.logged === false && (
+                <LoginDialog
+                    onLogin={() => {
+                        dispatcher((s) => ({ ...s, logged: true }));
+                    }}
+                />
+            )}
             {/* <LoginDialog /> */}
         </div>
     );

@@ -1,6 +1,6 @@
 import { getGlobalStorage, useGlobalDispatcher } from "./hooks/customState";
 import { deleteToken } from "./hooks/tokenManagement";
-import { IFolder } from "./redux/store/FoldersStore";
+import { IFolder } from "@redux/store/FoldersStore";
 
 class API {
     #uri: string;

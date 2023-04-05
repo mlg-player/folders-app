@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { useCallback, useState } from "react";
 import ContextMenu from "../../../components/ContextMenu/ContextMenu";
-import More from "../../../icons/More";
+import More from "@icons/More";
 import { getIconByType } from "../../../LeftPanel/components/LeftPanelItems/LeftPanelItems";
 import css from "./Header.module.scss";
 const Header = (props: { title: string; type?: string }) => {

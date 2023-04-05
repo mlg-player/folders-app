@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ContextMenu from '../components/ContextMenu/ContextMenu';
-import Reload from '../icons/Reload';
+import Reload from '@icons/Reload';
 import useLocale from './useLocale';
 
 

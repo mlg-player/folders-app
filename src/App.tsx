@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+import { useAppDispatch } from "@redux";
+
 import CenterPanel from "./CenterPanel/CenterPanel";
-import API from "./fetch";
-import ContextMenuHandler from "./hooks/ContextMenuHandler";
-import { useCustomEventListener } from "./hooks/customEventListeners";
 import LeftPanel from "./LeftPanel/LeftPanel";
-import { useAppDispatch } from "./redux";
-import socket from "./redux/socketEventListener";
-import { FoldersStore } from "./redux/store/FoldersStore";
+
+import API from "@fetch";
+import { FoldersStore } from "@redux/store/FoldersStore";
+import ContextMenuHandler from "@hooks/ContextMenuHandler";
 
 const App = () => {
     const dispatch = useAppDispatch();

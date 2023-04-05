@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { CustomPortalRoot } from "../../hooks/CustomPortalRoot";
+import { CustomPortalRoot } from "@hooks/CustomPortalRoot";
 import ContextItems from "./ContextItems";
 import "./ContextMenu.scss";
 const ContextMenu = (props: {

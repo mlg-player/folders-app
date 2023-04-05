@@ -1,10 +1,11 @@
-import _ from "lodash";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import API from "../../fetch";
-import { CustomPortalRoot } from "../../hooks/CustomPortalRoot";
-import { useGlobalDispatcher } from "../../hooks/customState";
-import useLocale from "../../hooks/useLocale";
 import css from "./LoginDialog.module.scss";
+
+import _ from "lodash";
+
+import API from "@fetch";
+import { CustomPortalRoot } from "@hooks/CustomPortalRoot";
+import useLocale from "@hooks/useLocale";
 const LoginDialog = React.memo((props: {
     onLogin: () => void
 }) => {

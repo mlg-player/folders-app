@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React from "react";
-import { useAppSelector } from "../redux";
-import folderSelectors from "../redux/selectors/folders";
+import { useAppSelector } from "@redux";
+import folderSelectors from "@redux/selectors/folders";
 const { getCurrentFolder, getFolderItems } = folderSelectors;
 import EmptyState from "./components/EmptyState/EmptyState";
 import Header from "./components/Header/Header";

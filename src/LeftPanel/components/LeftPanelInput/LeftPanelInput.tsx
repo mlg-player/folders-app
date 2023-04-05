@@ -1,13 +1,14 @@
-import { isEqual, uniqueId } from "lodash";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { FoldersStore } from "../../../redux/store/FoldersStore";
 import css from "./LeftPanelInput.module.scss";
+import { isEqual, uniqueId } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
 
-import API from "../../../fetch";
-import folderSelectors from "../../../redux/selectors/folders";
+import API from "@fetch";
+import useLocale from "@hooks/useLocale";
+import { FoldersStore } from "@redux/store/FoldersStore";
+import folderSelectors from "@redux/selectors/folders";
+
 const { getFoldersCount } = folderSelectors
-import useLocale from "../../../hooks/useLocale";
 
 const LeftPanelInput = () => {
   const input = useRef<HTMLInputElement>(null);

@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { useMemo } from "react";
-import useLocale from "../../../hooks/useLocale";
+import useLocale from "@hooks/useLocale";
 import css from "./EmptyState.module.scss";
 
 const EmptyState = ({
