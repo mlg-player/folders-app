@@ -25,16 +25,20 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "baseUrl": "./",
+
         "paths": {
-            "@hooks/*": ["src/hooks/*"],
-            "@redux/*": ["src/redux/*", "src/redux/index.tsx"],
-            "@redux": ["src/redux/index.tsx"],
-            "@icons/*": ["src/icons/*"],
-            "@dialogs/*": ["src/Dialogs/*"],
-            "@fetch": ["src/fetch.ts"],
-            "@components/*": ["src/components/*"]
+            "@hooks/*": ["./src/hooks/*"],
+            "@redux/*": ["./src/redux/*"],
+            "@redux": ["./src/redux/index.tsx"],
+            "@icons/*": ["./src/icons/*"],
+            "@dialogs/*": ["./src/Dialogs/*"],
+            "@fetch": ["./src/fetch.ts"],
+            "@components/*": ["./src/components/*"]
         }
     },
-    "include": ["typings/**/*", "src/**/*", "locales/useLocale.tsx"],
+    "include": [
+        "./**/*.ts",
+        "./**/*.tsx"
+    ],
     "exclude": ["build", "config", "node_modules", "public", "dist"]
 }

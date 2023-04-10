@@ -3,7 +3,7 @@ import en from "../../locales/en.json";
 const DEFAULT_LANG = "en";
 
 // TODO In future add more locale support
-const localesList = {
+const localesList: Record<string, Record<string, string>> = {
   en: en,
 };
 
@@ -29,7 +29,7 @@ const useLocale = (
     let text: string | Record<string, string> = getLocale[key]
       ? getLocale[key]
       : defaultLocales[key];
-    if (options?.type && typeof text === "object") {
+    if (options?.type && typeof text === "object" && text) {
       text = text[options?.type] ?? Object.values(text)[0];
     }
 
