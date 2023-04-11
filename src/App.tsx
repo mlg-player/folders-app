@@ -25,6 +25,7 @@ const App = () => {
 
     return (
         <>
+
             <ContextMenuHandler />
             <LeftPanel />
             <CenterPanel />

@@ -2,7 +2,7 @@
     --bg-center: #2B2E41;
     --white: #FBF5F7;
     --alert: #DA5151;
-    --text-25:rgba(251, 245, 247, 0.25);
+    --text-25: rgba(251, 245, 247, 0.25);
     --text-50: rgba(251, 245, 247, 0.55);
     --text-85: rgba(251, 245, 247, 0.85);
     --text-100: #FBF5F7;
@@ -35,9 +35,11 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    & > * {
+
+    &>* {
         z-index: 1000;
     }
+
     &.active::after {
         z-index: 999;
         width: 100vw;
@@ -48,4 +50,15 @@ html {
         content: "";
     }
 
+}
+
+#tooltip-root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+
+    &.active {
+        z-index: 1001;
+    }
 }
